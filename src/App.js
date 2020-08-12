@@ -9,9 +9,6 @@ import React, { useState } from 'react';
 // Import the Posts (plural!) and SearchBar components, since they are used inside App component
 // Import the dummyData
 import './App.css';
-import LikeSection from './components/Posts/LikeSection';
-import Post from './components/Posts/Post';
-import PostHeader from './components/Posts/PostHeader';
 import Posts from './components/Posts/Posts';
 import SearchBar from './components/SearchBar/SearchBar';
 import dummyData from './dummy-data';
@@ -37,7 +34,10 @@ const App = () => {
     setPosts(
       posts.map(post => {
       if(post.id === postId) {
-        return {...post, likes : post.likes + 1 }
+        return {
+          ...post, 
+          likes: post.likes + 1 
+        }
       }
       return post
     })
@@ -48,6 +48,8 @@ const App = () => {
   return (
     <div className='App'>
       {/* Add SearchBar and Posts here to render them */}
+      <SearchBar/>
+      < Posts posts = {posts}/>
       {/* Check the implementation of each component, to see what props they require, if any! */}
     </div>
   );
